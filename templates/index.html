@@ -2,6 +2,7 @@
 <head>
     <title>Draw the Wave</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </head>
 <body>
     <div>
@@ -9,6 +10,5 @@
         <p>Click and drag to draw a wave.</p>
         <p>Press 'c' to clear the canvas.</p>
     </div>
-    <button id="download" onclick=downloadSVG()>Download</button>
-    <script src="sketch.js"></script>
+    <button id="download" onclick=sendPoints()>Download</button>
 </body>

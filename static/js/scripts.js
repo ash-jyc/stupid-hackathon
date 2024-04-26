@@ -1,5 +1,6 @@
 let points = [];
-let real_waveform = []
+let real_waveform = [];
+let prev_state = 0;
 function setup() {
     // Setup canvas size and any other initializations
     createCanvas(600, 200);
@@ -17,16 +18,16 @@ function draw() {
         strokeWeight(4);
         line(pmouseX, pmouseY, mouseX, mouseY);
         points.push({ startX: mouseX, startY: mouseY, endX: mouseX, endY: mouseY });
-
+        console.log(points)
     }
-    if (!mouseIsPressed && points.length > 0) {
-        let lineCoords = [];
-        for (let i = 0; i < points.length; i++) {
-            lineCoords.push([points[i].startX, points[i].startY]);
-            lineCoords.push([points[i].endX, points[i].endY]);
-        }
-        console.log("Line object coordinates:", lineCoords);
-    }
+    // if (!mouseIsPressed && points.length > 0) {
+    //     let lineCoords = [];
+    //     for (let i = 0; i < points.length; i++) {
+    //         lineCoords.push([points[i].startX, points[i].startY]);
+    //         lineCoords.push([points[i].endX, points[i].endY]);
+    //     }
+    //     console.log("Line object coordinates:", lineCoords);
+    // }
     // allow it to stay on the canvas
     if (keyIsPressed) {
         if (key === 'c') {
@@ -91,4 +92,29 @@ function distance(point1, point2) {
     const dx = point1[0] - point2[0];
     const dy = point1[1] - point2[1];
     return Math.sqrt(dx * dx + dy * dy);
-}   
+}
+
+function sendPoints() {
+    // Send the points to the server
+    const data = {
+        points: points,
+        waveform: real_waveform
+    };
+    console.log(data);
+
+    // Send the data to the server
+    fetch('/api', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .then(data => {
+            // Display the response from the server
+            console.log('Server response:', data);
+            const result = document.getElementById('result');
+            result.innerHTML = data.result;
+        });
+}
