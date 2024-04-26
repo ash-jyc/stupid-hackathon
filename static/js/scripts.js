@@ -98,7 +98,6 @@ function sendPoints() {
     // Send the points to the server
     const data = {
         points: points,
-        waveform: real_waveform
     };
     console.log(data);
 
