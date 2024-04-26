@@ -56,7 +56,11 @@ function dtwDistanceBetweenLines(lines1, lines2) {
     // Calculate DTW distance between the sequences
     return dtwDistance(seq1, seq2);
 }
-
+function playClip(){
+    const song = "C:\\Users\\David\\Documents\\GitHub\\stupid-hackathon\\mp3_files\\44.mp3"
+    const audio = new Audio(song);
+    audio.play(); 
+}
 function linesToSequence(lines) {
     let seq = [];
     for (let i = 0; i < lines.length; i++) {
