@@ -1,5 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 import json
+from music import Music
+import numpy as np
 
 # create basic flask application
 app = Flask(__name__)
@@ -10,6 +12,8 @@ def api():
     # get the data from the request
     data = request.get_json()
     print(data)
+    song_data = Music().song
+    print(song_data)
     # return the data as a response
     return jsonify(data)
 
