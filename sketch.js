@@ -1,6 +1,6 @@
 function setup() {
     // Setup canvas size and any other initializations
-    createCanvas(400, 400);
+    createCanvas(600, 200);
     background(220);
     stroke(0);
     strokeWeight(4);
