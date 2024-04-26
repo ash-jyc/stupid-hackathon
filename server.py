@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 import json
-from music import Music
+from music import choose_song
 import numpy as np
 
 # create basic flask application
@@ -12,7 +12,7 @@ def api():
     # get the data from the request
     data = request.get_json()
     print(data)
-    song_data = Music().song
+    song_data = choose_song()
     print(song_data)
     # return the data as a response
     return jsonify(data)
