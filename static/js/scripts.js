@@ -57,7 +57,7 @@ function dtwDistanceBetweenLines(lines1, lines2) {
     return dtwDistance(seq1, seq2);
 }
 function playClip(){
-    const song = "C:\\Users\\David\\Documents\\GitHub\\stupid-hackathon\\mp3_files\\44.mp3"
+    const song = "static/mp3_files/41.mp3";
     const audio = new Audio(song);
     audio.play(); 
 }
